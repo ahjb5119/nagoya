@@ -3,367 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>名古屋三天兩夜精華遊</title>
+    <title>名古屋熱血 ACG 行程</title>
     <style>
         /* 暗黑風格 CSS 設定 */
         body {
-            background-color: #121212;
+            background-color: #0d0d0d;
             color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', "Microsoft JhengHei", sans-serif;
             margin: 0;
             padding: 20px;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 800px;
-            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 0;
+        /* 鐮刀刷下來的動畫效果 */
+        #scythe-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, transparent 45%, #ff5252 50%, transparent 55%);
+            background-size: 300% 300%;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0;
         }
 
-        h1 {
-            color: #ffffff;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        .slash-animation {
+            animation: slashEffect 0.6s ease-out forwards;
         }
 
-        .subtitle {
-            color: #aaaaaa;
-            font-size: 1.1em;
+        @keyframes slashEffect {
+            0% { opacity: 0; background-position: 100% 100%; }
+            50% { opacity: 1; }
+            100% { opacity: 0; background-position: 0% 0%; }
         }
 
-        /* 分頁按鈕樣式 */
+        /* 標題與分頁 */
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { color: #ffffff; font-size: 2.2em; text-shadow: 0 0 10px #ff5252; }
+        
         .tabs {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 25px;
         }
 
         .tab-btn {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
-            border: 2px solid transparent;
-            padding: 12px 25px;
-            border-radius: 30px;
+            background-color: #1a1a1a;
+            color: #aaa;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 1.1em;
+            transition: 0.3s;
             font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn:hover {
-            background-color: #3a3a3a;
         }
 
         .tab-btn.active {
-            background-color: #ffb74d;
-            color: #121212;
-            box-shadow: 0 0 10px rgba(255, 183, 77, 0.5);
+            background-color: #ff5252;
+            color: white;
+            border-color: #ff5252;
+            box-shadow: 0 0 15px rgba(255, 82, 82, 0.4);
         }
 
-        /* ACG 特殊按鈕 */
-        .acg-btn {
-            background-color: #311b92;
-            color: #b39ddb;
-            border: 1px solid #7e57c2;
-        }
-        .acg-btn.active {
-            background-color: #7e57c2;
-            color: #ffffff;
-            box-shadow: 0 0 10px rgba(126, 87, 194, 0.6);
-        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* 分頁內容與動畫 */
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .day-card {
-            background-color: #1e1e1e;
+        /* 行程卡片 */
+        .card {
+            background: #161616;
             border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            border-left: 5px solid #ffb74d;
+            padding: 20px;
             margin-bottom: 20px;
+            border-left: 4px solid #ff5252;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
+
+        h2 { color: #ffb74d; margin-top: 0; font-size: 1.3em; }
+        .time-box { color: #81c784; font-weight: bold; margin-bottom: 5px; display: block; }
+        .transport { background: #252525; padding: 10px; border-radius: 5px; font-size: 0.85em; color: #90a4ae; margin-top: 10px; }
         
-        /* ACG 卡片換色 */
-        .acg-card {
-            border-left: 5px solid #7e57c2;
-        }
-        .acg-card h2 {
-            color: #b39ddb;
-            border-bottom: 1px solid #333333;
-        }
-
-        h2 {
-            color: #ffb74d;
-            margin-top: 0;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 10px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        li {
-            background-color: #2a2a2a;
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-        }
-
-        li:last-child {
-            margin-bottom: 0;
-        }
-
-        .time {
-            font-weight: bold;
-            color: #81c784;
-            margin-bottom: 5px;
-            font-size: 1.1em;
-        }
-
-        .desc {
-            margin-bottom: 10px;
-        }
-
-        /* 交通與距離資訊樣式 */
-        .transport {
-            background-color: #333333;
-            color: #b0bec5;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-            width: calc(100% - 30px);
-            border-left: 4px solid #64b5f6;
-        }
-
-        /* 快閃活動資訊樣式 */
-        .popup-info {
-            background-color: #4a148c;
-            color: #e1bee7;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-            width: calc(100% - 30px);
-            border-left: 4px solid #ce93d8;
-        }
-
-        /* 超連結樣式 */
+        /* 連結按鈕 */
         a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 12px;
+            background: #333;
             color: #64b5f6;
             text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 5px;
-            background-color: #121212;
-            padding: 8px 15px;
-            border-radius: 5px;
+            border-radius: 4px;
             font-size: 0.9em;
-            transition: background-color 0.3s, color 0.3s;
             border: 1px solid #64b5f6;
         }
+        a:hover { background: #64b5f6; color: #fff; }
 
-        a:hover {
-            color: #ffffff;
-            background-color: #1976d2;
-            border-color: #1976d2;
-        }
-
-        .icon {
-            margin-right: 8px;
+        /* 咒術/動漫標籤 */
+        .acg-tag {
+            background: #4a148c;
+            color: #e1bee7;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75em;
+            margin-left: 5px;
         }
     </style>
 </head>
 <body>
 
+    <div id="scythe-overlay"></div>
+
     <div class="container">
         <header>
-            <h1><span class="icon">🏯</span>名古屋三天兩夜精華遊</h1>
-            <div class="subtitle">4/5 出發｜紅眼航班</div>
+            <h1>NAGOYA MISSION 4/5-4/7</h1>
+            <p>暗黑之鐮 ｜ 紅眼動漫征途</p>
         </header>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'day1')">Day 1 (4/5)</button>
-            <button class="tab-btn" onclick="openTab(event, 'day2')">Day 2 (4/6)</button>
-            <button class="tab-btn" onclick="openTab(event, 'day3')">Day 3 (4/7)</button>
-            <button class="tab-btn acg-btn" onclick="openTab(event, 'acg')">🎮 動漫 & 夾娃娃</button>
+            <button class="tab-btn active" onclick="triggerSlash('day1')">Day 1 (4/5)</button>
+            <button class="tab-btn" onclick="triggerSlash('day2')">Day 2 (4/6)</button>
+            <button class="tab-btn" onclick="triggerSlash('day3')">Day 3 (4/7)</button>
+            <button class="tab-btn" style="border-color:#7e57c2" onclick="triggerSlash('acg')">ACG 情報</button>
         </div>
 
         <main>
             <div id="day1" class="tab-content" style="display: block;">
-                <section class="day-card">
-                    <h2>Day 1：紅眼熱血啟程與和牛盛宴</h2>
-                    <ul>
-                        <li>
-                            <div class="time">✈️ 02:10 - 06:00｜抵達與市區移動</div>
-                            <div class="desc"><strong>台北出發 ➔ 名古屋中部國際機場</strong>：搭乘紅眼航班抵達，入境後搭乘名鐵前往市區寄放行李。</div>
-                            <div class="transport">🚆 交通出發：搭乘「名鐵 μ-SKY」或特急列車直達名古屋車站，車程約 28-35 分鐘。</div>
-                        </li>
-                        <li>
-                            <div class="time">📍 09:30 - 12:30｜晨間歷史巡禮</div>
-                            <div class="desc"><strong>名古屋城</strong>：趁人潮較少且體力充沛時，參觀日本三大名城之一。（建議早上先去，避免下午排不進去）</div>
-                            <div class="transport">🚆 交通與距離：從名古屋站搭乘地鐵東山線至「榮」，轉乘名城線至「名古屋城」站。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=名古屋城" target="_blank">🗺️ Google Maps：名古屋城</a>
-                        </li>
-                        <li>
-                            <div class="time">🥩 13:30 - 15:00｜頂級午餐饗宴</div>
-                            <div class="desc"><strong>飛騨牛一頭家 馬喰一代 名古屋WEST</strong>：重頭戲！享用入口即化的頂級飛驒牛燒肉午餐。</div>
-                            <div class="transport">🚶 交通與距離：從名古屋城搭地鐵返回「名古屋」站，步行約 3-5 分鐘即可抵達。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=飛騨牛一頭家+馬喰一代+名古屋WEST" target="_blank">🗺️ Google Maps：馬喰一代 名古屋WEST</a>
-                        </li>
-                        <li>
-                            <div class="time">📍 15:30 - 18:00｜午後老街挖寶 (✨動漫夾娃娃重鎮)</div>
-                            <div class="desc"><strong>大須觀音 & 大須商店街</strong>：充滿活力的商店街，這裡也是名古屋的「秋葉原」，有非常多夾娃娃機台與動漫周邊店！</div>
-                            <div class="transport">🚆 交通與距離：從名古屋站搭地鐵東山線至「伏見」，轉乘鶴舞線至「大須觀音」站。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=大須觀音" target="_blank">🗺️ Google Maps：大須商店街</a>
-                        </li>
-                        <li>
-                            <div class="time">📍 18:30 - 20:00｜傍晚神聖氣息</div>
-                            <div class="desc"><strong>熱田神宮</strong>：神宮境內24小時開放，傍晚點燈後的參道人潮稀少，散步起來非常寧靜神聖。</div>
-                            <div class="transport">🚆 交通與距離：從大須觀音搭地鐵鶴舞線至「上前津」，轉名城線至「神宮西」站。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=熱田神宮" target="_blank">🗺️ Google Maps：熱田神宮</a>
-                        </li>
-                    </ul>
-                </section>
+                <div class="card">
+                    <span class="time-box">06:00 - 09:00 | 抵達與寄放行李</span>
+                    <h2>名古屋站與飯店</h2>
+                    <p>到達名古屋後，先前往飯店寄放行李。若飯店在名鐵/地鐵附近，建議先梳洗一番恢復體力。</p>
+                </div>
+                <div class="card">
+                    <span class="time-box">09:30 - 12:00 | 晨間歷史</span>
+                    <h2>名古屋城</h2>
+                    <p>要在午餐前完成第一個大地標！參觀金鯱與本丸御殿。</p>
+                    <a href="https://www.google.com/maps/search/Nagoya+Castle" target="_blank">🗺️ 地圖導航</a>
+                </div>
+                <div class="card" style="border-left-color: #ffb74d;">
+                    <span class="time-box">13:30 - 15:30 | 飛驒牛盛宴</span>
+                    <h2>馬喰一代 名古屋WEST</h2>
+                    <p><strong>預約時間 13:30</strong>。體驗名古屋最頂級的飛驒牛燒肉，炭火香氣能洗平紅眼航班的疲勞。</p>
+                    <a href="https://www.google.com/maps/search/Bakuro+Ichidai+Nagoya+West" target="_blank">🗺️ 地圖導航</a>
+                </div>
+                <div class="card">
+                    <span class="time-box">16:00 - 18:30 | 宅文化巡禮</span>
+                    <h2>大須商店街 & 大須觀音</h2>
+                    <p>吃飽後衝大須！這有 Mandarake、Animate 分店與無數夾娃娃機店。</p>
+                    <a href="https://www.google.com/maps/search/Osu+Shopping+District" target="_blank">🗺️ 地圖導航</a>
+                </div>
+                <div class="card">
+                    <span class="time-box">19:00 - 20:30 | 深夜祈願</span>
+                    <h2>熱田神宮</h2>
+                    <p>第一天最後一站，在神宮深夜安靜的氛圍下散步。神宮境內 24 小時開放。</p>
+                    <a href="https://www.google.com/maps/search/Atsuta+Jingu" target="_blank">🗺️ 地圖導航</a>
+                </div>
             </div>
 
             <div id="day2" class="tab-content">
-                <section class="day-card">
-                    <h2>Day 2：產業科技與海洋生態</h2>
-                    <ul>
-                        <li>
-                            <div class="time">📍 上午｜豐田產業技術紀念館</div>
-                            <div class="desc">了解日本製造業的崛起，從紡織機到現代汽車的發展史，互動性極佳。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=豐田產業技術紀念館" target="_blank">🗺️ Google Maps：豐田紀念館</a>
-                        </li>
-                        <li>
-                            <div class="time">📍 下午｜名古屋港水族館</div>
-                            <div class="desc">日本面積最大的水族館之一，必看精彩的虎鯨與海豚表演。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=名古屋港水族館" target="_blank">🗺️ Google Maps：名古屋港水族館</a>
-                        </li>
-                        <li>
-                            <div class="time">📍 晚上｜晚餐與居酒屋時光</div>
-                            <div class="desc">晚上可回到名古屋車站周邊或金山站，隨意挑選一間居酒屋體驗夜生活。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=金山站+名古屋" target="_blank">🗺️ Google Maps：金山站周邊</a>
-                        </li>
-                    </ul>
-                </section>
+                <div class="card">
+                    <span class="time-box">09:00 - 13:00 | 國寶巡禮</span>
+                    <h2>犬山城與城下町</h2>
+                    <p>考慮前往犬山！搭乘名鐵約 30 分鐘。犬山城是日本五大國寶城之一，城下町還有超可愛的愛心糰子與美食。</p>
+                    <div class="transport">🚆 從名古屋站搭乘「名鐵犬山線」快速特急。</div>
+                    <a href="https://www.google.com/maps/search/Inuyama+Castle" target="_blank">🗺️ 地圖導航</a>
+                </div>
+                <div class="card">
+                    <span class="time-box">14:30 - 21:00 | 都市大採購 Phase 1</span>
+                    <h2>榮商圈 (Sakae)</h2>
+                    <p>回到市區。目標：Sakae Nova (動漫聖地)、榮 Loft (咒術/進擊快閃店)、驚安殿堂唐吉訶德。</p>
+                    <a href="https://www.google.com/maps/search/Sakae+Nagoya+Shopping" target="_blank">🗺️ 地圖導航</a>
+                </div>
             </div>
 
             <div id="day3" class="tab-content">
-                <section class="day-card">
-                    <h2>Day 3：都會美景與最後採買</h2>
-                    <ul>
-                        <li>
-                            <div class="time">📍 上午｜則武森林 (Noritake Garden)</div>
-                            <div class="desc">充滿紅磚建築的歐風庭園，旁邊有超美的大型書店 TSUTAYA BOOKSTORE 可以拍網美照。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=則武森林" target="_blank">🗺️ Google Maps：則武森林</a>
-                        </li>
-                        <li>
-                            <div class="time">📍 下午｜榮商圈 & 綠洲21 (Oasis 21)</div>
-                            <div class="desc">前往名古屋最繁華的榮商圈，這裡也有很多快閃店與動漫周邊展出！</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Oasis+21" target="_blank">🗺️ Google Maps：綠洲21</a>
-                        </li>
-                        <li>
-                            <div class="time">📍 傍晚｜名古屋車站商圈 & 賦歸</div>
-                            <div class="desc">離開前的高效購物時光，並搭乘名鐵前往機場準備回程。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=名鐵名古屋站" target="_blank">🗺️ Google Maps：名鐵名古屋站</a>
-                        </li>
-                    </ul>
-                </section>
+                <div class="card">
+                    <span class="time-box">10:00 - 18:00 | 都市大採購 Phase 2</span>
+                    <h2>名古屋車站 (Meieki) 戰區</h2>
+                    <p>待在都市內。目標：JR 高島屋 (咒術 PLAZA 快閃店)、Bic Camera 名古屋西店 (動漫電玩大樓)、名鐵百貨採購伴手禮。</p>
+                    <a href="https://www.google.com/maps/search/Nagoya+Station+Shopping" target="_blank">🗺️ 地圖導航</a>
+                </div>
+                <div class="card" style="border-left-color: #64b5f6;">
+                    <span class="time-box">19:00~ | 返程準備</span>
+                    <h2>中部國際機場</h2>
+                    <p>如果還有體力，機場 4 樓藍天城也有不少商店可以進行最後最後的補貨。</p>
+                </div>
             </div>
 
             <div id="acg" class="tab-content">
-                <section class="day-card acg-card">
-                    <h2>🔥 4/5 - 4/7 期間：期間限定動漫快閃店</h2>
+                <div class="card" style="border-left-color: #7e57c2;">
+                    <h2>🤞 咒術迴戰 攻略點</h2>
                     <ul>
-                        <li>
-                            <div class="time">✨ 進擊的巨人 POP UP STORE</div>
-                            <div class="desc">販售多款全新繪製周邊，展期剛好到 4/6，請把握機會！</div>
-                            <div class="popup-info">📅 展期：至 2026/4/6 (一) 止<br>📍 地點：榮 Loft 6階 (SAKAE NOVA 3～6F)</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=大須觀音6" target="_blank">🗺️ Google Maps：榮 Loft</a>
-                        </li>
-                        <li>
-                            <div class="time">✨ 戀上換裝娃娃 Season 2 POP UP STORE</div>
-                            <div class="desc"><strong>注意！4/5 是最後一天！</strong>如果你有興趣，Day 1 下午或晚上一定要衝一波。</div>
-                            <div class="popup-info">📅 展期：至 2026/4/5 (日) 止<br>📍 地點：榮 Loft 6階</div>
-                        </li>
-                        <li>
-                            <div class="time">✨ 魔法少女小圓 × 名古屋市營地下鐵</div>
-                            <div class="desc">有車站集章活動，且在指定店鋪有販售限定聯名周邊（買周邊不用集章）。</div>
-                            <div class="popup-info">📅 展期：至 2026/4/19 (日) 止<br>📍 周邊販售點：Animega x Sofmap 名古屋站西店 (Bic Camera 3F)</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=大須觀音7" target="_blank">🗺️ Google Maps：Bic Camera 名古屋站西店</a>
-                        </li>
-                        <li>
-                            <div class="time">✨ 暗殺教室 10周年聯名咖啡廳</div>
-                            <div class="desc">紀念動畫10周年的聯名咖啡廳，有專屬餐點與周邊。</div>
-                            <div class="popup-info">📅 展期：至 2026/4/12 (日) 止<br>📍 地點：Sweets Paradise 名古屋榮店 (COLLABO PARADISE)</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=大須觀音8" target="_blank">🗺️ Google Maps：Sweets Paradise 名古屋榮店</a>
-                        </li>
+                        <li><strong>動畫展：</strong>松坂屋名古屋店 7F (4/5 最後一天！)</li>
+                        <li><strong>PLAZA 快閃店：</strong>Hands 名古屋店 10F (名古屋站內)</li>
+                        <li><strong>5週年咖啡廳：</strong>Sweets Paradise 名古屋店</li>
                     </ul>
-                </section>
-
-                <section class="day-card acg-card">
-                    <h2>🕹️ 夾娃娃機 & 動漫周邊必逛地圖</h2>
-                    <ul>
-                        <li>
-                            <div class="time">📍 大須商店街 (名古屋的秋葉原)</div>
-                            <div class="desc"><strong>Mandarake (まんだらけ) 名古屋店</strong>：二手模型、漫畫、同人誌尋寶聖地。<br><strong>Taito Station & GiGO 大須</strong>：這兩家夾娃娃機超多，景品更新極快。<br><strong>駿河屋 大須本館</strong>：買賣各類動漫周邊、一番賞景品的好地方。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=大須觀音9" target="_blank">🗺️ Google Maps：Mandarake 名古屋店</a>
-                        </li>
-                        <li>
-                            <div class="time">📍 名古屋車站周邊 (名駅)</div>
-                            <div class="desc"><strong>Animate (アニメイト) 名古屋店</strong>：找最新官方周邊、漫畫必去，位在太閤通口側。<br><strong>namco 名古屋站前店</strong>：超大型夾娃娃機中心，經常有萬代或 namco 限定景品。</div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=綠洲210" target="_blank">🗺️ Google Maps：Animate 名古屋</a>
-                        </li>
-                    </ul>
-                </section>
+                </div>
+                <div class="card" style="border-left-color: #7e57c2;">
+                    <h2>🕹️ 夾娃娃/動漫常駐推薦</h2>
+                    <p><strong>GIGO & Taito Station：</strong>大須商店街內有多間，推薦找景品更新最快的。</p>
+                    <p><strong>駿河屋 & Mandarake：</strong>大須兩大神店，找二手稀有模型必去。</p>
+                </div>
             </div>
         </main>
     </div>
 
     <script>
-        function openTab(evt, dayName) {
-            let tabContents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].style.display = "none";
-            }
+        function triggerSlash(dayId) {
+            const overlay = document.getElementById('scythe-overlay');
+            
+            // 觸發鐮刀動畫
+            overlay.classList.remove('slash-animation');
+            void overlay.offsetWidth; // 強制瀏覽器重繪
+            overlay.classList.add('slash-animation');
 
-            let tabBtns = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < tabBtns.length; i++) {
-                tabBtns[i].classList.remove("active");
-            }
+            // 延遲切換分頁內容，配合動畫時間
+            setTimeout(() => {
+                let tabContents = document.getElementsByClassName("tab-content");
+                for (let i = 0; i < tabContents.length; i++) {
+                    tabContents[i].style.display = "none";
+                }
 
-            document.getElementById(dayName).style.display = "block";
-            evt.currentTarget.classList.add("active");
+                let tabBtns = document.getElementsByClassName("tab-btn");
+                for (let i = 0; i < tabBtns.length; i++) {
+                    tabBtns[i].classList.remove("active");
+                }
+
+                document.getElementById(dayId).style.display = "block";
+                event.currentTarget.classList.add("active");
+            }, 300);
         }
-    </script>
 
+        // 初次載入自動執行一次動畫
+        window.onload = () => {
+            const overlay = document.getElementById('scythe-overlay');
+            overlay.classList.add('slash-animation');
+        };
+    </script>
 </body>
 </html>
