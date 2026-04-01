@@ -88,19 +88,33 @@
             border-left: 4px solid #ff5252;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
+        
+        .acg-card {
+            border-left: 5px solid #7e57c2;
+        }
 
         h2 { color: #ffb74d; margin-top: 0; font-size: 1.3em; }
+        .acg-card h2 { color: #b39ddb; border-bottom: 1px solid #333333; padding-bottom: 10px; }
+        
         .time-box { color: #81c784; font-weight: bold; margin-bottom: 5px; display: block; }
         
         /* 美食專屬高亮 */
         .meal-highlight {
-            color: #ffca28; /* 食慾感滿滿的暖橘黃色 */
+            color: #ffca28;
             font-weight: bold;
             font-size: 1.1em;
             margin: 8px 0 4px 0;
         }
         
-        .transport { background: #252525; padding: 10px; border-radius: 5px; font-size: 0.85em; color: #90a4ae; margin-top: 10px; border-left: 3px solid #90a4ae; }
+        /* ACG 專屬高亮 */
+        .cafe-title { color: #ff9100; font-weight: bold; font-size: 1.1em; margin-top: 15px; margin-bottom: 5px; }
+        .expo-title { color: #00e5ff; font-weight: bold; font-size: 1.1em; margin-top: 15px; margin-bottom: 5px; }
+        .alert-title { color: #ff5252; font-weight: bold; font-size: 1.1em; margin-top: 15px; margin-bottom: 5px; }
+        .desc { margin-bottom: 5px; color: #cccccc; }
+        
+        ul { list-style-type: none; padding: 0; margin: 0; }
+        li { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #333; }
+        li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
         /* 連結按鈕 */
         a {
@@ -115,16 +129,6 @@
             border: 1px solid #64b5f6;
         }
         a:hover { background: #64b5f6; color: #fff; }
-
-        /* 咒術/動漫標籤 */
-        .acg-tag {
-            background: #4a148c;
-            color: #e1bee7;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.75em;
-            margin-left: 5px;
-        }
     </style>
 </head>
 <body>
@@ -141,7 +145,7 @@
             <button class="tab-btn active" onclick="triggerSlash('day1')">Day 1 (4/5)</button>
             <button class="tab-btn" onclick="triggerSlash('day2')">Day 2 (4/6)</button>
             <button class="tab-btn" onclick="triggerSlash('day3')">Day 3 (4/7)</button>
-            <button class="tab-btn" style="border-color:#7e57c2" onclick="triggerSlash('acg')">ACG 情報</button>
+            <button class="tab-btn" style="border-color:#7e57c2" onclick="triggerSlash('acg')">ACG 總部</button>
         </div>
 
         <main>
@@ -149,7 +153,7 @@
                 <div class="card">
                     <span class="time-box">06:00 - 09:00 | 抵達與寄放行李</span>
                     <h2>名古屋站與飯店</h2>
-                    <p>到達名古屋後，先前往飯店寄放行李，稍微梳洗一番。</p>
+                    <p>到達名古屋後，搭乘名鐵前往市區，先至 The Royal Park Canvas-Nagoya 寄放行李，稍微梳洗一番。</p>
                     <div class="meal-highlight">🍳 【第1餐：早餐】客美多咖啡 (Komeda's Coffee)</div>
                     <p>名古屋名物「買咖啡送吐司」！來份招牌紅豆泥奶油吐司，補充紅眼航班流失的體力。</p>
                 </div>
@@ -163,25 +167,24 @@
                     <h2>飛騨牛一頭家 馬喰一代 名古屋WEST</h2>
                     <div class="meal-highlight">🥩 【第2餐：午餐】頂級飛驒牛燒肉</div>
                     <p><strong>預約時間 13:30</strong>。體驗名古屋最頂級的飛驒牛燒肉，炭火香氣能洗平紅眼航班的疲勞。</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=豐田產業技術紀念館5" target="_blank">🗺️ 導航：馬喰一代</a>
                 </div>
                 <div class="card">
                     <span class="time-box">16:00 - 18:30 | 宅文化巡禮</span>
                     <h2>大須商店街 & 大須觀音</h2>
-                    <p>吃飽後衝大須！這有 Mandarake、Animate 分店與無數夾娃娃機店。</p>
+                    <p>吃飽後衝大須！這有 Mandarake、駿河屋與無數夾娃娃機店。</p>
                 </div>
                 <div class="card">
                     <span class="time-box">19:00 - 20:30 | 深夜祈願與晚餐</span>
                     <h2>熱田神宮 & 矢場豬排</h2>
                     <p>在神宮深夜安靜的氛圍下散步。神宮境內 24 小時開放。</p>
                     <div class="meal-highlight">🍛 【第3餐：晚餐】矢場味噌豬排 (Yabaton)</div>
-                    <p>參拜完後，到附近的「金山站」或返回「榮商圈」吃超大份量的鐵板味噌豬排，醬汁淋上去發出嘶嘶聲超療癒！</p>
+                    <p>吃超大份量的鐵板味噌豬排，醬汁淋上去發出嘶嘶聲超療癒！</p>
                 </div>
                 <div class="card" style="border-left-color: #ffca28;">
                     <span class="time-box">22:00 - 24:00 | 居酒屋之夜</span>
                     <h2>世界的山將 (世界の山ちゃん)</h2>
                     <div class="meal-highlight">🍻 【第4餐：宵夜】幻之手羽先 (炸雞翅)</div>
-                    <p>名古屋最經典的居酒屋！胡椒味極重的炸雞翅配上生啤酒，第一晚完美結尾。分店超多，找飯店附近的一家吃即可。</p>
+                    <p>名古屋最經典的居酒屋！胡椒味極重的炸雞翅配上生啤酒，第一晚完美結尾。</p>
                 </div>
             </div>
 
@@ -190,28 +193,26 @@
                     <span class="time-box">08:00 - 13:00 | 國寶巡禮</span>
                     <h2>犬山城與城下町</h2>
                     <div class="meal-highlight">🥪 【第1餐：早餐】Konparu (コンパル) 炸蝦三明治</div>
-                    <p>去搭車前，在名古屋車站地下街買份當地人狂推的超狂「炸蝦三明治」帶上車吃。</p>
-                    <p>搭乘名鐵前往犬山！犬山城是日本五大國寶城之一。</p>
+                    <p>搭車前在地下街買份當地人狂推的超狂「炸蝦三明治」帶上車吃。</p>
                     <div class="meal-highlight">🍡 【第2餐：午餐】犬山城下町 邊走邊吃</div>
-                    <p>不用吃正餐，這裡有飛驒牛握壽司、超可愛的愛心糰子 (戀小町糰子)、五平餅，直接沿路吃飽！</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=豐田產業技術紀念館6" target="_blank">🗺️ 導航：犬山城</a>
+                    <p>搭名鐵前往犬山城。這裡有飛驒牛握壽司、愛心糰子與五平餅，直接沿路吃飽！</p>
                 </div>
                 <div class="card">
                     <span class="time-box">14:30 - 19:00 | 都市大採購 Phase 1</span>
                     <h2>榮商圈 (Sakae)</h2>
-                    <p>回到市區。目標：Sakae Nova (動漫聖地)、榮 Loft (咒術/進擊快閃店)、驚安殿堂唐吉訶德。</p>
+                    <p>回到市區。目標：Sakae Nova (動漫聖地)、榮 Loft、唐吉訶德。</p>
                 </div>
                 <div class="card" style="border-left-color: #ffb74d;">
                     <span class="time-box">19:30 - 21:00 | 必吃鰻魚飯</span>
                     <h2>榮商圈 鰻魚飯三吃</h2>
-                    <div class="meal-highlight">🍱 【第3餐：晚餐】白河 (しら河) 鰻魚飯 / 蓬萊軒</div>
-                    <p>來名古屋絕對不能不吃的「鰻魚飯三吃 (Hitsumabushi)」！榮商圈的「白河」CP值極高且非常美味，外皮烤得極度酥脆。</p>
+                    <div class="meal-highlight">🍱 【第3餐：晚餐】白河 (しら河) 鰻魚飯</div>
+                    <p>來名古屋必吃的「鰻魚飯三吃」！榮商圈的「白河」CP值極高，外皮極度酥脆。</p>
                 </div>
                 <div class="card" style="border-left-color: #ffca28;">
                     <span class="time-box">22:00 - 24:00 | 地道串燒居酒屋</span>
                     <h2>錦三丁目 / 榮商圈</h2>
                     <div class="meal-highlight">🍢 【第4餐：宵夜】鏑屋 (かぶら屋) 或 鳥貴族</div>
-                    <p>前往名古屋夜生活中心「錦三丁目」！推薦找「鏑屋」吃超便宜的黑味噌關東煮與烤串，或是去國民居酒屋「鳥貴族」狂吃烤雞肉串。</p>
+                    <p>前往名古屋夜生活中心「錦三丁目」吃超便宜的黑味噌關東煮與烤串！</p>
                 </div>
             </div>
 
@@ -220,43 +221,107 @@
                     <span class="time-box">09:00 - 10:00 | 濃郁復古早晨</span>
                     <h2>名駅周邊</h2>
                     <div class="meal-highlight">☕ 【第1餐：早餐】Bucyo Coffee</div>
-                    <p>當地超人氣的復古咖啡廳，他們的紅豆奶油吐司上面還會加霜淇淋，超級罪惡但極度美味！</p>
+                    <p>紅豆奶油吐司上面還會加霜淇淋，超級罪惡但極度美味！</p>
                 </div>
                 <div class="card">
                     <span class="time-box">10:00 - 18:00 | 都市大採購 Phase 2</span>
                     <h2>名古屋車站 (Meieki) 戰區</h2>
-                    <p>目標：JR 高島屋 (咒術 PLAZA 快閃店)、Bic Camera 名古屋西店、各大百貨補齊伴手禮。</p>
+                    <p>目標：JR 高島屋、Bic Camera 名古屋西店、各大百貨補齊伴手禮。</p>
                     <div class="meal-highlight">🍜 【第2餐：午餐】味仙 (Misen) 台灣拉麵</div>
-                    <p>其實是名古屋人發明的超辣肉燥拉麵！名駅周邊就有分店，蒜香與辣味直衝腦門，非常過癮。</p>
+                    <p>名古屋人發明的超辣肉燥拉麵！蒜香與辣味直衝腦門，非常過癮。</p>
                 </div>
                 <div class="card" style="border-left-color: #ffb74d;">
                     <span class="time-box">18:00 - 19:30 | 離開前的執念</span>
                     <h2>名古屋車站 美食街</h2>
                     <div class="meal-highlight">🍲 【第3餐：晚餐】山本屋總本家 味噌煮烏龍麵</div>
-                    <p>最後一餐正餐，用極度濃郁的八丁味噌搭配非常有嚼勁的生烏龍麵，用土鍋熱騰騰的端上來，吃完剛好搭車去機場。</p>
+                    <p>極度濃郁的八丁味噌搭配非常有嚼勁的生烏龍麵，吃完剛好搭車去機場。</p>
                 </div>
                 <div class="card" style="border-left-color: #64b5f6;">
                     <span class="time-box">20:00~ | 返程準備</span>
                     <h2>中部國際機場</h2>
                     <div class="meal-highlight">🍰 【第4餐：宵夜】超商大掃貨 / 飛機餐</div>
-                    <p>機場免稅店最後衝刺。如果在市區沒吃到 HARBS 的水果千層蛋糕，機場買一塊當作完美的句點，再買幾串超商炸雞上飛機睡覺！</p>
+                    <p>買幾串超商炸雞上飛機睡覺！</p>
                 </div>
             </div>
 
             <div id="acg" class="tab-content">
-                <div class="card" style="border-left-color: #7e57c2;">
-                    <h2>🤞 咒術迴戰 攻略點</h2>
+                
+                <div class="card acg-card">
+                    <h2>⚠️ 4/5 最後一天！(抵達當天必衝)</h2>
                     <ul>
-                        <li><strong>動畫展：</strong>松坂屋名古屋店 7F (4/5 最後一天！)</li>
-                        <li><strong>PLAZA 快閃店：</strong>Hands 名古屋店 10F (名古屋站內)</li>
-                        <li><strong>5週年咖啡廳：</strong>Sweets Paradise 名古屋店</li>
+                        <li>
+                            <div class="alert-title">🤞 咒術迴戰 動畫展</div>
+                            <div class="desc">超大型官方巡迴展，最後一天千萬別錯過！<br>📍 松坂屋名古屋店 本館7階</div>
+                        </li>
+                        <li>
+                            <div class="alert-title">🗑️ ガチアクタ (Gachiakuta) POP UP SHOP</div>
+                            <div class="desc">📍 タカシマヤ ゲートタワーモール (高島屋 Gate Tower Mall) 7階</div>
+                        </li>
+                        <li>
+                            <div class="alert-title">🏸 アオのハコ (青春之箱) 快閃店</div>
+                            <div class="desc">📍 名古屋市區會場</div>
+                        </li>
+                        <li>
+                            <div class="alert-title">🌟 偶像夢幻祭!! (Ensemble Stars!!) 聯名咖啡廳</div>
+                            <div class="desc">📍 Animate Cafe 名古屋店</div>
+                        </li>
                     </ul>
                 </div>
-                <div class="card" style="border-left-color: #7e57c2;">
-                    <h2>🕹️ 夾娃娃/動漫常駐推薦</h2>
-                    <p><strong>GIGO & Taito Station：</strong>大須商店街內有多間，推薦找景品更新最快的。</p>
-                    <p><strong>駿河屋 & Mandarake：</strong>大須兩大神店，找二手稀有模型必去。</p>
+
+                <div class="card acg-card">
+                    <h2>☕ 動漫主題聯名咖啡廳 (4/5-4/7期間)</h2>
+                    <ul>
+                        <li>
+                            <div class="cafe-title">🔥 家庭教師HITMAN REBORN! × and GALLERY</div>
+                            <div class="desc">販售穿著黑西裝的阿綱、雲雀等人的全新繪製周邊，還有專屬的死氣之火特調飲品與角色餐點！<br>📅 2026/4/1 ～ 4/22<br>📍 and GALLERY 名古屋2號店</div>
+                        </li>
+                        <li>
+                            <div class="cafe-title">⚔️ 鬼滅之刃 全系列重播紀念聯名咖啡廳</div>
+                            <div class="desc">ufotable 官方直營！配合電視動畫重播全新開幕的主題活動。<br>📅 2026/4/2 起<br>📍 ufotableCafe NAGOYA</div>
+                        </li>
+                        <li>
+                            <div class="cafe-title">🌿 藥師少女的獨語 × and GALLERY</div>
+                            <div class="desc">有以中華風為主題的限定餐點，以及全新繪製的貓貓 Q 版周邊。<br>📅 2026/4/4 ～ 5/6<br>📍 and GALLERY 名古屋店</div>
+                        </li>
+                    </ul>
                 </div>
+
+                <div class="card acg-card">
+                    <h2>🎪 期間限定快閃店 & 展覽 (4/5-4/7期間)</h2>
+                    <ul>
+                        <li>
+                            <div class="expo-title">🤞 咒術迴戰 PLAZA 快閃店</div>
+                            <div class="desc">販售大量周邊的大型快閃店，剛好在你抵達前幾天開幕！<br>📅 2026/4/2 ～ 4/15<br>📍 Hands 名古屋店 10樓 (JR名古屋高島屋內)</div>
+                        </li>
+                        <li>
+                            <div class="expo-title">🏐 ハイキュー!! (排球少年!!) PLAZA</div>
+                            <div class="desc">排少迷必逛的大型周邊販售站！<br>📅 2026/4/1 起<br>📍 名古屋市區特設會場</div>
+                        </li>
+                        <li>
+                            <div class="expo-title">🥷 忍たま乱太郎 (忍者亂太郎) POP UP STORE</div>
+                            <div class="desc">主題為「快樂的賞花段落」，販售充滿春季氣息的周邊。<br>📅 2026/4/3 ～ 4/19<br>📍 榮 Loft 6階</div>
+                        </li>
+                        <li>
+                            <div class="expo-title">🌀 NARUTO-ナルト- 疾風伝 學園フェア</div>
+                            <div class="desc">火影忍者學園祭主題周邊活動。<br>📅 2026/3/27 ～ 4/12<br>📍 Animate 名古屋店</div>
+                        </li>
+                        <li>
+                            <div class="expo-title">🤖 魔神英雄傳 & 魔神創造傳 快閃店</div>
+                            <div class="desc">懷舊神作回歸！販售「有趣帥氣」的限定模型與周邊。<br>📅 2026/3/26 ～ 4/10<br>📍 Hands 名古屋店 8樓 (JR名古屋高島屋內)</div>
+                        </li>
+                        <li>
+                            <div class="expo-title">🦋 動畫《天官賜福》展 -天地流光-</div>
+                            <div class="desc">超大型官方展覽！還原動畫精美場景、獨家語音與大量限定周邊。<br>📅 展出至 2026/4/19<br>📍 テレピアホール (Telepia Hall / 榮商圈)</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card acg-card">
+                    <h2>🕹️ 夾娃娃機 & 動漫周邊常駐聖地</h2>
+                    <p><strong>【大須商店街】</strong><br>Mandarake (まんだらけ) 名古屋店、Taito Station、GiGO 大須、駿河屋 大須本館</p>
+                    <p><strong>【名古屋車站周邊】</strong><br>Animate (アニメイト) 名古屋店、namco 名古屋站前店、Bic Camera 名古屋站西店 (Animega x Sofmap)</p>
+                </div>
+
             </div>
         </main>
     </div>
@@ -265,12 +330,10 @@
         function triggerSlash(dayId) {
             const overlay = document.getElementById('scythe-overlay');
             
-            // 觸發鐮刀動畫
             overlay.classList.remove('slash-animation');
-            void overlay.offsetWidth; // 強制瀏覽器重繪
+            void overlay.offsetWidth; 
             overlay.classList.add('slash-animation');
 
-            // 延遲切換分頁內容，配合動畫時間
             setTimeout(() => {
                 let tabContents = document.getElementsByClassName("tab-content");
                 for (let i = 0; i < tabContents.length; i++) {
@@ -287,7 +350,6 @@
             }, 300);
         }
 
-        // 初次載入自動執行一次動畫
         window.onload = () => {
             const overlay = document.getElementById('scythe-overlay');
             overlay.classList.add('slash-animation');
