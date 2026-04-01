@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>名古屋熱血 ACG 行程</title>
+    <title>名古屋熱血 ACG 與美食征途</title>
     <style>
         /* 暗黑風格 CSS 設定 */
         body {
@@ -91,7 +91,16 @@
 
         h2 { color: #ffb74d; margin-top: 0; font-size: 1.3em; }
         .time-box { color: #81c784; font-weight: bold; margin-bottom: 5px; display: block; }
-        .transport { background: #252525; padding: 10px; border-radius: 5px; font-size: 0.85em; color: #90a4ae; margin-top: 10px; }
+        
+        /* 美食專屬高亮 */
+        .meal-highlight {
+            color: #ffca28; /* 食慾感滿滿的暖橘黃色 */
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 8px 0 4px 0;
+        }
+        
+        .transport { background: #252525; padding: 10px; border-radius: 5px; font-size: 0.85em; color: #90a4ae; margin-top: 10px; border-left: 3px solid #90a4ae; }
         
         /* 連結按鈕 */
         a {
@@ -125,7 +134,7 @@
     <div class="container">
         <header>
             <h1>NAGOYA MISSION 4/5-4/7</h1>
-            <p>暗黑之鐮 ｜ 紅眼動漫征途</p>
+            <p>暗黑之鐮 ｜ 紅眼動漫與爆食征途</p>
         </header>
 
         <div class="tabs">
@@ -140,61 +149,97 @@
                 <div class="card">
                     <span class="time-box">06:00 - 09:00 | 抵達與寄放行李</span>
                     <h2>名古屋站與飯店</h2>
-                    <p>到達名古屋後，先前往飯店寄放行李。若飯店在名鐵/地鐵附近，建議先梳洗一番恢復體力。</p>
+                    <p>到達名古屋後，先前往飯店寄放行李，稍微梳洗一番。</p>
+                    <div class="meal-highlight">🍳 【第1餐：早餐】客美多咖啡 (Komeda's Coffee)</div>
+                    <p>名古屋名物「買咖啡送吐司」！來份招牌紅豆泥奶油吐司，補充紅眼航班流失的體力。</p>
                 </div>
                 <div class="card">
                     <span class="time-box">09:30 - 12:00 | 晨間歷史</span>
                     <h2>名古屋城</h2>
                     <p>要在午餐前完成第一個大地標！參觀金鯱與本丸御殿。</p>
-                    <a href="https://www.google.com/maps/search/Nagoya+Castle" target="_blank">🗺️ 地圖導航</a>
                 </div>
                 <div class="card" style="border-left-color: #ffb74d;">
-                    <span class="time-box">13:30 - 15:30 | 飛驒牛盛宴</span>
-                    <h2>馬喰一代 名古屋WEST</h2>
+                    <span class="time-box">13:30 - 15:30 | 頂級燒肉</span>
+                    <h2>飛騨牛一頭家 馬喰一代 名古屋WEST</h2>
+                    <div class="meal-highlight">🥩 【第2餐：午餐】頂級飛驒牛燒肉</div>
                     <p><strong>預約時間 13:30</strong>。體驗名古屋最頂級的飛驒牛燒肉，炭火香氣能洗平紅眼航班的疲勞。</p>
-                    <a href="https://www.google.com/maps/search/Bakuro+Ichidai+Nagoya+West" target="_blank">🗺️ 地圖導航</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=豐田產業技術紀念館5" target="_blank">🗺️ 導航：馬喰一代</a>
                 </div>
                 <div class="card">
                     <span class="time-box">16:00 - 18:30 | 宅文化巡禮</span>
                     <h2>大須商店街 & 大須觀音</h2>
                     <p>吃飽後衝大須！這有 Mandarake、Animate 分店與無數夾娃娃機店。</p>
-                    <a href="https://www.google.com/maps/search/Osu+Shopping+District" target="_blank">🗺️ 地圖導航</a>
                 </div>
                 <div class="card">
-                    <span class="time-box">19:00 - 20:30 | 深夜祈願</span>
-                    <h2>熱田神宮</h2>
-                    <p>第一天最後一站，在神宮深夜安靜的氛圍下散步。神宮境內 24 小時開放。</p>
-                    <a href="https://www.google.com/maps/search/Atsuta+Jingu" target="_blank">🗺️ 地圖導航</a>
+                    <span class="time-box">19:00 - 20:30 | 深夜祈願與晚餐</span>
+                    <h2>熱田神宮 & 矢場豬排</h2>
+                    <p>在神宮深夜安靜的氛圍下散步。神宮境內 24 小時開放。</p>
+                    <div class="meal-highlight">🍛 【第3餐：晚餐】矢場味噌豬排 (Yabaton)</div>
+                    <p>參拜完後，到附近的「金山站」或返回「榮商圈」吃超大份量的鐵板味噌豬排，醬汁淋上去發出嘶嘶聲超療癒！</p>
+                </div>
+                <div class="card" style="border-left-color: #ffca28;">
+                    <span class="time-box">22:00 - 24:00 | 居酒屋之夜</span>
+                    <h2>世界的山將 (世界の山ちゃん)</h2>
+                    <div class="meal-highlight">🍻 【第4餐：宵夜】幻之手羽先 (炸雞翅)</div>
+                    <p>名古屋最經典的居酒屋！胡椒味極重的炸雞翅配上生啤酒，第一晚完美結尾。分店超多，找飯店附近的一家吃即可。</p>
                 </div>
             </div>
 
             <div id="day2" class="tab-content">
                 <div class="card">
-                    <span class="time-box">09:00 - 13:00 | 國寶巡禮</span>
+                    <span class="time-box">08:00 - 13:00 | 國寶巡禮</span>
                     <h2>犬山城與城下町</h2>
-                    <p>考慮前往犬山！搭乘名鐵約 30 分鐘。犬山城是日本五大國寶城之一，城下町還有超可愛的愛心糰子與美食。</p>
-                    <div class="transport">🚆 從名古屋站搭乘「名鐵犬山線」快速特急。</div>
-                    <a href="https://www.google.com/maps/search/Inuyama+Castle" target="_blank">🗺️ 地圖導航</a>
+                    <div class="meal-highlight">🥪 【第1餐：早餐】Konparu (コンパル) 炸蝦三明治</div>
+                    <p>去搭車前，在名古屋車站地下街買份當地人狂推的超狂「炸蝦三明治」帶上車吃。</p>
+                    <p>搭乘名鐵前往犬山！犬山城是日本五大國寶城之一。</p>
+                    <div class="meal-highlight">🍡 【第2餐：午餐】犬山城下町 邊走邊吃</div>
+                    <p>不用吃正餐，這裡有飛驒牛握壽司、超可愛的愛心糰子 (戀小町糰子)、五平餅，直接沿路吃飽！</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=豐田產業技術紀念館6" target="_blank">🗺️ 導航：犬山城</a>
                 </div>
                 <div class="card">
-                    <span class="time-box">14:30 - 21:00 | 都市大採購 Phase 1</span>
+                    <span class="time-box">14:30 - 19:00 | 都市大採購 Phase 1</span>
                     <h2>榮商圈 (Sakae)</h2>
                     <p>回到市區。目標：Sakae Nova (動漫聖地)、榮 Loft (咒術/進擊快閃店)、驚安殿堂唐吉訶德。</p>
-                    <a href="https://www.google.com/maps/search/Sakae+Nagoya+Shopping" target="_blank">🗺️ 地圖導航</a>
+                </div>
+                <div class="card" style="border-left-color: #ffb74d;">
+                    <span class="time-box">19:30 - 21:00 | 必吃鰻魚飯</span>
+                    <h2>榮商圈 鰻魚飯三吃</h2>
+                    <div class="meal-highlight">🍱 【第3餐：晚餐】白河 (しら河) 鰻魚飯 / 蓬萊軒</div>
+                    <p>來名古屋絕對不能不吃的「鰻魚飯三吃 (Hitsumabushi)」！榮商圈的「白河」CP值極高且非常美味，外皮烤得極度酥脆。</p>
+                </div>
+                <div class="card" style="border-left-color: #ffca28;">
+                    <span class="time-box">22:00 - 24:00 | 地道串燒居酒屋</span>
+                    <h2>錦三丁目 / 榮商圈</h2>
+                    <div class="meal-highlight">🍢 【第4餐：宵夜】鏑屋 (かぶら屋) 或 鳥貴族</div>
+                    <p>前往名古屋夜生活中心「錦三丁目」！推薦找「鏑屋」吃超便宜的黑味噌關東煮與烤串，或是去國民居酒屋「鳥貴族」狂吃烤雞肉串。</p>
                 </div>
             </div>
 
             <div id="day3" class="tab-content">
                 <div class="card">
+                    <span class="time-box">09:00 - 10:00 | 濃郁復古早晨</span>
+                    <h2>名駅周邊</h2>
+                    <div class="meal-highlight">☕ 【第1餐：早餐】Bucyo Coffee</div>
+                    <p>當地超人氣的復古咖啡廳，他們的紅豆奶油吐司上面還會加霜淇淋，超級罪惡但極度美味！</p>
+                </div>
+                <div class="card">
                     <span class="time-box">10:00 - 18:00 | 都市大採購 Phase 2</span>
                     <h2>名古屋車站 (Meieki) 戰區</h2>
-                    <p>待在都市內。目標：JR 高島屋 (咒術 PLAZA 快閃店)、Bic Camera 名古屋西店 (動漫電玩大樓)、名鐵百貨採購伴手禮。</p>
-                    <a href="https://www.google.com/maps/search/Nagoya+Station+Shopping" target="_blank">🗺️ 地圖導航</a>
+                    <p>目標：JR 高島屋 (咒術 PLAZA 快閃店)、Bic Camera 名古屋西店、各大百貨補齊伴手禮。</p>
+                    <div class="meal-highlight">🍜 【第2餐：午餐】味仙 (Misen) 台灣拉麵</div>
+                    <p>其實是名古屋人發明的超辣肉燥拉麵！名駅周邊就有分店，蒜香與辣味直衝腦門，非常過癮。</p>
+                </div>
+                <div class="card" style="border-left-color: #ffb74d;">
+                    <span class="time-box">18:00 - 19:30 | 離開前的執念</span>
+                    <h2>名古屋車站 美食街</h2>
+                    <div class="meal-highlight">🍲 【第3餐：晚餐】山本屋總本家 味噌煮烏龍麵</div>
+                    <p>最後一餐正餐，用極度濃郁的八丁味噌搭配非常有嚼勁的生烏龍麵，用土鍋熱騰騰的端上來，吃完剛好搭車去機場。</p>
                 </div>
                 <div class="card" style="border-left-color: #64b5f6;">
-                    <span class="time-box">19:00~ | 返程準備</span>
+                    <span class="time-box">20:00~ | 返程準備</span>
                     <h2>中部國際機場</h2>
-                    <p>如果還有體力，機場 4 樓藍天城也有不少商店可以進行最後最後的補貨。</p>
+                    <div class="meal-highlight">🍰 【第4餐：宵夜】超商大掃貨 / 飛機餐</div>
+                    <p>機場免稅店最後衝刺。如果在市區沒吃到 HARBS 的水果千層蛋糕，機場買一塊當作完美的句點，再買幾串超商炸雞上飛機睡覺！</p>
                 </div>
             </div>
 
